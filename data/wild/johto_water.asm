@@ -243,14 +243,14 @@ JohtoWaterWildMons:
 	def_water_wildmons ECRUTEAK_CITY
 	db 2 percent ; encounter rate
 	dbw 20, POLIWAG
-	dbw 15, POLIWAG
+	dbw 15, SURSKIT
 	dbw 20, POLIWHIRL
 	end_water_wildmons
 
 	def_water_wildmons LAKE_OF_RAGE
 	db 6 percent ; encounter rate
 	dbw 15, MAGIKARP
-	dbw 10, MAGIKARP
+	dbw 10, SURSKIT
 	dbw 15, GYARADOS
 	end_water_wildmons
 

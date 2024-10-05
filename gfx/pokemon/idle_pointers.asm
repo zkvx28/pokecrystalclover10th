@@ -251,4 +251,33 @@ AnimationIdlePointers:
 	dw LugiaAnimationIdle
 	dw HoOhAnimationIdle
 	dw CelebiAnimationIdle
+	dw CelebiAnimationIdle
+	dw CelebiAnimationIdle
+	dw SwabluAnimationIdle
+	dw AltariaAnimationIdle
+	dw SolrockAnimationIdle
+	dw LunatoneAnimationIdle
+	dw DrifloonAnimationIdle
+	dw DrifblimAnimationIdle
+	dw SeviperAnimationIdle
+	dw ZangooseAnimationIdle
+	dw CroagunkAnimationIdle
+	dw ToxicroakAnimationIdle
+	dw AronAnimationIdle
+	dw LaironAnimationIdle
+	dw AggronAnimationIdle
+	dw SnoruntAnimationIdle
+	dw GlalieAnimationIdle
+	dw SeedotAnimationIdle
+	dw NuzleafAnimationIdle
+	dw ShiftryAnimationIdle
+	dw MedititeAnimationIdle
+	dw MedichamAnimationIdle
+	dw MawileAnimationIdle
+	dw SableyeAnimationIdle
+	dw MakuhitaAnimationIdle
+	dw HariyamaAnimationIdle
+	dw SurskitAnimationIdle
+	dw MasquerainAnimationIdle
+	dw OrthwormAnimationIdle
 	assert_table_length NUM_POKEMON

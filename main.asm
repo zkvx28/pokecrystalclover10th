@@ -243,7 +243,6 @@ INCLUDE "engine/pokemon/switchpartymons.asm"
 INCLUDE "engine/gfx/load_pics.asm"
 INCLUDE "engine/pokemon/move_mon_wo_mail.asm"
 INCLUDE "data/pokemon/base_stats.asm"
-INCLUDE "data/pokemon/names.asm"
 
 
 SECTION "Crystal Phone Text", ROMX
@@ -416,7 +415,6 @@ INCLUDE "engine/battle_anims/helpers.asm"
 
 SECTION "Pic Animations 1", ROMX
 
-INCLUDE "engine/gfx/pic_animation.asm"
 INCLUDE "gfx/pokemon/anim_pointers.asm"
 INCLUDE "gfx/pokemon/anims.asm"
 INCLUDE "gfx/pokemon/idle_pointers.asm"
@@ -471,7 +469,6 @@ INCLUDE "engine/link/time_capsule_2.asm"
 INCLUDE "engine/pokedex/unown_dex.asm"
 INCLUDE "engine/events/magikarp.asm"
 INCLUDE "engine/battle/hidden_power.asm"
-INCLUDE "engine/battle/misc.asm"
 
 
 SECTION "bank3F", ROMX
@@ -693,3 +690,9 @@ INCLUDE "engine/16/table_functions.asm"
 
 ; own section
 INCLUDE "data/trainers/parties.asm"
+
+SECTION "Crystal Dreams 1", ROMX
+
+INCLUDE "data/pokemon/names.asm"
+INCLUDE "engine/gfx/pic_animation.asm"
+INCLUDE "engine/battle/misc.asm"

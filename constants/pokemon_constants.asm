@@ -271,6 +271,35 @@ DEF JOHTO_POKEMON EQU const_value
 	const LUGIA      ; f9
 	const HO_OH      ; fa
 	const CELEBI     ; fb
+	const BLOBBOS    ; 
+	const SOBBOLB    ; 
+	const SWABLU     ; 
+	const ALTARIA    ; 
+	const SOLROCK    ; 
+	const LUNATONE   ; 
+	const DRIFLOON   ; 
+	const DRIFBLIM   ; 
+	const SEVIPER    ; 
+	const ZANGOOSE   ; 
+	const CROAGUNK   ; 
+	const TOXICROAK  ; 
+	const ARON       ; 
+	const LAIRON     ; 
+	const AGGRON     ; 
+	const SNORUNT    ; 
+	const GLALIE     ; 
+	const SEEDOT     ; 
+	const NUZLEAF    ; 
+	const SHIFTRY    ; 
+	const MEDITITE   ; 
+	const MEDICHAM   ; 
+	const MAWILE     ; 
+	const SABLEYE    ; 
+	const MAKUHITA   ; 
+	const HARIYAMA   ; 
+	const SURSKIT    ; 
+	const MASQUERAIN ; 
+	const ORTHWORM   ; 
 DEF NUM_POKEMON EQU const_value - 1
 
 DEF EGG EQU -3

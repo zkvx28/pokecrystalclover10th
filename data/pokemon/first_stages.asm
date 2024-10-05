@@ -252,4 +252,33 @@ FirstEvoStages::
 	dw LUGIA
 	dw HO_OH
 	dw CELEBI
+	dw BLOBBOS
+	dw SOBBOLB
+	dw SWABLU
+	dw SWABLU
+	dw SOLROCK
+	dw LUNATONE
+	dw DRIFLOON
+	dw DRIFLOON
+	dw SEVIPER
+	dw ZANGOOSE
+	dw CROAGUNK
+	dw CROAGUNK
+	dw ARON
+	dw ARON
+	dw ARON
+	dw SNORUNT
+	dw SNORUNT
+	dw SEEDOT
+	dw SEEDOT
+	dw SEEDOT
+	dw MEDITITE
+	dw MEDITITE
+	dw MAWILE
+	dw SABLEYE
+	dw MAKUHITA
+	dw MAKUHITA
+	dw SURSKIT
+	dw SURSKIT
+	dw ORTHWORM
 	assert_table_length NUM_POKEMON

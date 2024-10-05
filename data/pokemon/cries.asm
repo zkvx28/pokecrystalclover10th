@@ -257,4 +257,33 @@ PokemonCries::
 	mon_cry CRY_TYPHLOSION,    0,  256 ; LUGIA
 	mon_cry CRY_AIPOM,         0,  384 ; HO_OH
 	mon_cry CRY_ENTEI,       330,  273 ; CELEBI
+	mon_cry CRY_NIDORAN_M,     0,  256 ; BLOBBOS
+	mon_cry CRY_NIDORAN_M,     0,  256 ; SOBBOLB
+	mon_cry CRY_NIDORAN_M,     0,  256 ; SWABLU
+	mon_cry CRY_NIDORAN_M,     0,  256 ; ALTARIA
+	mon_cry CRY_NIDORAN_M,     0,  256 ; SOLROCK
+	mon_cry CRY_NIDORAN_M,     0,  256 ; LUNATONE
+	mon_cry CRY_NIDORAN_M,     0,  256 ; DRIFLOON
+	mon_cry CRY_NIDORAN_M,     0,  256 ; DRIFBLIM
+	mon_cry CRY_NIDORAN_M,     0,  256 ; SEVIPER
+	mon_cry CRY_NIDORAN_M,     0,  256 ; ZANGOOSE
+	mon_cry CRY_NIDORAN_M,     0,  256 ; CROAGUNK
+	mon_cry CRY_NIDORAN_M,     0,  256 ; TOXICROAK
+	mon_cry CRY_NIDORAN_M,     0,  256 ; ARON
+	mon_cry CRY_NIDORAN_M,     0,  256 ; LAIRON
+	mon_cry CRY_NIDORAN_M,     0,  256 ; AGGRON
+	mon_cry CRY_NIDORAN_M,     0,  256 ; SNORUNT
+	mon_cry CRY_NIDORAN_M,     0,  256 ; GLALIE
+	mon_cry CRY_NIDORAN_M,     0,  256 ; SEEDOT
+	mon_cry CRY_NIDORAN_M,     0,  256 ; NUZLEAF
+	mon_cry CRY_NIDORAN_M,     0,  256 ; SHIFTRY
+	mon_cry CRY_NIDORAN_M,     0,  256 ; MEDITITE
+	mon_cry CRY_NIDORAN_M,     0,  256 ; MEDICHAM
+	mon_cry CRY_NIDORAN_M,     0,  256 ; MAWILE
+	mon_cry CRY_NIDORAN_M,     0,  256 ; SABLEYE
+	mon_cry CRY_NIDORAN_M,     0,  256 ; MAKUHITA
+	mon_cry CRY_NIDORAN_M,     0,  256 ; HARIYAMA
+	mon_cry CRY_NIDORAN_M,     0,  256 ; SURSKIT
+	mon_cry CRY_NIDORAN_M,     0,  256 ; MASQUERAIN
+	mon_cry CRY_NIDORAN_M,     0,  256 ; ORTHWORM
 	assert_table_length NUM_POKEMON

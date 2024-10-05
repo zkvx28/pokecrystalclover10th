@@ -55,7 +55,7 @@ KantoGrassWildMons:
 	dbw 12, PARAS
 	dbw 10, GEODUDE
 	dbw 12, CLEFAIRY
-	dbw 12, CLEFAIRY
+	dbw 12, LUNATONE
 	end_grass_wildmons
 
 	def_grass_wildmons ROCK_TUNNEL_1F
@@ -65,16 +65,16 @@ KantoGrassWildMons:
 	dbw 11, GEODUDE
 	dbw 12, MACHOP
 	dbw 12, ZUBAT
-	dbw 15, MACHOKE
-	dbw 12, MAROWAK
+	dbw 15, MAWILE
+	dbw 15, SABLEYE
 	dbw 12, MAROWAK
 	; day
 	dbw 10, CUBONE
 	dbw 11, GEODUDE
 	dbw 12, MACHOP
 	dbw 12, ZUBAT
-	dbw 15, MACHOKE
-	dbw 12, MAROWAK
+	dbw 15, MAWILE
+	dbw 15, SABLEYE
 	dbw 12, MAROWAK
 	; nite
 	dbw 12, ZUBAT
@@ -82,8 +82,8 @@ KantoGrassWildMons:
 	dbw 12, GEODUDE
 	dbw 17, HAUNTER
 	dbw 15, ZUBAT
-	dbw 15, ZUBAT
-	dbw 15, ZUBAT
+	dbw 15, MAWILE
+	dbw 15, SABLEYE
 	end_grass_wildmons
 
 	def_grass_wildmons ROCK_TUNNEL_B1F
@@ -93,24 +93,24 @@ KantoGrassWildMons:
 	dbw 14, GEODUDE
 	dbw 16, ONIX
 	dbw 12, ZUBAT
-	dbw 15, MAROWAK
-	dbw 15, KANGASKHAN
+	dbw 15, MAWILE
+	dbw 15, SABLEYE
 	dbw 15, KANGASKHAN
 	; day
 	dbw 12, CUBONE
 	dbw 14, GEODUDE
 	dbw 16, ONIX
 	dbw 12, ZUBAT
-	dbw 15, MAROWAK
-	dbw 15, KANGASKHAN
+	dbw 15, MAWILE
+	dbw 15, SABLEYE
 	dbw 15, KANGASKHAN
 	; nite
 	dbw 12, ZUBAT
 	dbw 14, GEODUDE
 	dbw 16, ONIX
-	dbw 15, ZUBAT
 	dbw 15, HAUNTER
-	dbw 15, GOLBAT
+	dbw 15, MAWILE
+	dbw 15, SABLEYE
 	dbw 15, GOLBAT
 	end_grass_wildmons
 
@@ -123,7 +123,7 @@ KantoGrassWildMons:
 	dbw 34, GOLBAT
 	dbw 35, SANDSLASH
 	dbw 35, RHYDON
-	dbw 35, RHYDON
+	dbw 35, ORTHWORM
 	; day
 	dbw 34, GRAVELER
 	dbw 32, RHYHORN
@@ -131,7 +131,7 @@ KantoGrassWildMons:
 	dbw 34, GOLBAT
 	dbw 35, SANDSLASH
 	dbw 35, RHYDON
-	dbw 35, RHYDON
+	dbw 35, ORTHWORM
 	; nite
 	dbw 34, GOLBAT
 	dbw 34, GRAVELER
@@ -139,7 +139,7 @@ KantoGrassWildMons:
 	dbw 36, GRAVELER
 	dbw 38, GRAVELER
 	dbw 40, GRAVELER
-	dbw 40, GRAVELER
+	dbw 40, ORTHWORM
 	end_grass_wildmons
 
 	def_grass_wildmons TOHJO_FALLS
@@ -354,7 +354,7 @@ KantoGrassWildMons:
 	dbw 18, SNUBBULL
 	dbw 18, RATICATE
 	dbw 18, JIGGLYPUFF
-	dbw 16, ABRA
+	dbw 16, DRIFLOON
 	dbw 16, ABRA
 	; nite
 	dbw 17, MEOWTH
@@ -373,16 +373,16 @@ KantoGrassWildMons:
 	dbw 19, PIDGEOTTO
 	dbw 16, ABRA
 	dbw 17, GROWLITHE
-	dbw 16, JIGGLYPUFF
-	dbw 18, KADABRA
+	dbw 16, VULPIX
+	dbw 18, JIGGLYPUFF
 	dbw 18, KADABRA
 	; day
 	dbw 17, SNUBBULL
 	dbw 19, PIDGEOTTO
 	dbw 16, ABRA
 	dbw 17, GROWLITHE
-	dbw 16, JIGGLYPUFF
-	dbw 18, KADABRA
+	dbw 16, VULPIX
+	dbw 18, JIGGLYPUFF
 	dbw 18, KADABRA
 	; nite
 	dbw 17, MEOWTH
@@ -400,7 +400,7 @@ KantoGrassWildMons:
 	dbw 15, RATTATA
 	dbw 15, SPEAROW
 	dbw 15, RATICATE
-	dbw 15, FEAROW
+	dbw 15, MANKEY
 	dbw 15, FEAROW
 	dbw 18, MAROWAK
 	dbw 18, MAROWAK
@@ -408,7 +408,7 @@ KantoGrassWildMons:
 	dbw 15, RATTATA
 	dbw 15, SPEAROW
 	dbw 15, RATICATE
-	dbw 15, FEAROW
+	dbw 15, MANKEY
 	dbw 15, FEAROW
 	dbw 18, MAROWAK
 	dbw 18, MAROWAK
@@ -416,7 +416,7 @@ KantoGrassWildMons:
 	dbw 15, RATTATA
 	dbw 15, VENONAT
 	dbw 15, RATICATE
-	dbw 15, VENOMOTH
+	dbw 15, MANKEY
 	dbw 15, ZUBAT
 	dbw 18, RATICATE
 	dbw 18, RATICATE

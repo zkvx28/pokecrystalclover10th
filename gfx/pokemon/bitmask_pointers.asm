@@ -251,4 +251,33 @@ BitmasksPointers:
 	dw LugiaBitmasks
 	dw HoOhBitmasks
 	dw CelebiBitmasks
+	dw CelebiBitmasks
+	dw CelebiBitmasks
+	dw SwabluBitmasks
+	dw AltariaBitmasks
+	dw SolrockBitmasks
+	dw LunatoneBitmasks
+	dw DrifloonBitmasks
+	dw DrifblimBitmasks
+	dw SeviperBitmasks
+	dw ZangooseBitmasks
+	dw CroagunkBitmasks
+	dw ToxicroakBitmasks
+	dw AronBitmasks
+	dw LaironBitmasks
+	dw AggronBitmasks
+	dw SnoruntBitmasks
+	dw GlalieBitmasks
+	dw SeedotBitmasks
+	dw NuzleafBitmasks
+	dw ShiftryBitmasks
+	dw MedititeBitmasks
+	dw MedichamBitmasks
+	dw MawileBitmasks
+	dw SableyeBitmasks
+	dw MakuhitaBitmasks
+	dw HariyamaBitmasks
+	dw SurskitBitmasks
+	dw MasquerainBitmasks
+	dw OrthwormBitmasks
 	assert_table_length NUM_POKEMON

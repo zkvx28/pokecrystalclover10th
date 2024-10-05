@@ -4,12 +4,15 @@ AlphabeticalPokedexOrder:
 	table_width 2, AlphabeticalPokedexOrder
 	dw ABRA
 	dw AERODACTYL
+	dw AGGRON
 	dw AIPOM
 	dw ALAKAZAM
+	dw ALTARIA
 	dw AMPHAROS
 	dw ARBOK
 	dw ARCANINE
 	dw ARIADOS
+	dw ARON
 	dw ARTICUNO
 	dw AZUMARILL
 	dw BAYLEEF
@@ -18,6 +21,7 @@ AlphabeticalPokedexOrder:
 	dw BELLSPROUT
 	dw BLASTOISE
 	dw BLISSEY
+	dw BLOBBOS
 	dw BULBASAUR
 	dw BUTTERFREE
 	dw CATERPIE
@@ -33,6 +37,7 @@ AlphabeticalPokedexOrder:
 	dw CLEFFA
 	dw CLOYSTER
 	dw CORSOLA
+	dw CROAGUNK
 	dw CROBAT
 	dw CROCONAW
 	dw CUBONE
@@ -47,6 +52,8 @@ AlphabeticalPokedexOrder:
 	dw DRAGONAIR
 	dw DRAGONITE
 	dw DRATINI
+	dw DRIFBLIM
+	dw DRIFLOON
 	dw DROWZEE
 	dw DUGTRIO
 	dw DUNSPARCE
@@ -70,6 +77,7 @@ AlphabeticalPokedexOrder:
 	dw GENGAR
 	dw GEODUDE
 	dw GIRAFARIG
+	dw GLALIE
 	dw GLIGAR
 	dw GLOOM
 	dw GOLBAT
@@ -81,6 +89,7 @@ AlphabeticalPokedexOrder:
 	dw GRIMER
 	dw GROWLITHE
 	dw GYARADOS
+	dw HARIYAMA
 	dw HAUNTER
 	dw HERACROSS
 	dw HITMONCHAN
@@ -108,6 +117,7 @@ AlphabeticalPokedexOrder:
 	dw KINGLER
 	dw KOFFING
 	dw KRABBY
+	dw LAIRON
 	dw LANTURN
 	dw LAPRAS
 	dw LARVITAR
@@ -115,6 +125,7 @@ AlphabeticalPokedexOrder:
 	dw LEDYBA
 	dw LICKITUNG
 	dw LUGIA
+	dw LUNATONE
 	dw MACHAMP
 	dw MACHOKE
 	dw MACHOP
@@ -124,11 +135,16 @@ AlphabeticalPokedexOrder:
 	dw MAGMAR
 	dw MAGNEMITE
 	dw MAGNETON
+	dw MAKUHITA
 	dw MANKEY
 	dw MANTINE
 	dw MAREEP
 	dw MARILL
 	dw MAROWAK
+	dw MASQUERAIN
+	dw MAWILE
+	dw MEDICHAM
+	dw MEDITITE
 	dw MEGANIUM
 	dw MEOWTH
 	dw METAPOD
@@ -149,11 +165,13 @@ AlphabeticalPokedexOrder:
 	dw NIDORINO
 	dw NINETALES
 	dw NOCTOWL
+	dw NUZLEAF
 	dw OCTILLERY
 	dw ODDISH
 	dw OMANYTE
 	dw OMASTAR
 	dw ONIX
+	dw ORTHWORM
 	dw PARAS
 	dw PARASECT
 	dw PERSIAN
@@ -187,15 +205,19 @@ AlphabeticalPokedexOrder:
 	dw REMORAID
 	dw RHYDON
 	dw RHYHORN
+	dw SABLEYE
 	dw SANDSHREW
 	dw SANDSLASH
 	dw SCIZOR
 	dw SCYTHER
 	dw SEADRA
 	dw SEAKING
+	dw SEEDOT
 	dw SEEL
 	dw SENTRET
+	dw SEVIPER
 	dw SHELLDER
+	dw SHIFTRY
 	dw SHUCKLE
 	dw SKARMORY
 	dw SKIPLOOM
@@ -207,7 +229,10 @@ AlphabeticalPokedexOrder:
 	dw SMOOCHUM
 	dw SNEASEL
 	dw SNORLAX
+	dw SNORUNT
 	dw SNUBBULL
+	dw SOBBOLB
+	dw SOLROCK
 	dw SPEAROW
 	dw SPINARAK
 	dw SQUIRTLE
@@ -219,6 +244,8 @@ AlphabeticalPokedexOrder:
 	dw SUICUNE
 	dw SUNFLORA
 	dw SUNKERN
+	dw SURSKIT
+	dw SWABLU
 	dw SWINUB
 	dw TANGELA
 	dw TAUROS
@@ -228,6 +255,7 @@ AlphabeticalPokedexOrder:
 	dw TOGEPI
 	dw TOGETIC
 	dw TOTODILE
+	dw TOXICROAK
 	dw TYPHLOSION
 	dw TYRANITAR
 	dw TYROGUE
@@ -251,6 +279,7 @@ AlphabeticalPokedexOrder:
 	dw WOOPER
 	dw XATU
 	dw YANMA
+	dw ZANGOOSE
 	dw ZAPDOS
 	dw ZUBAT
 	assert_table_length NUM_POKEMON

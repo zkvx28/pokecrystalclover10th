@@ -252,4 +252,33 @@ PokedexDataPointerTable:
 	dba LugiaPokedexEntry
 	dba HoOhPokedexEntry
 	dba CelebiPokedexEntry
+	dba RattataPokedexEntry
+	dba RattataPokedexEntry
+	dba RattataPokedexEntry
+	dba RattataPokedexEntry
+	dba RattataPokedexEntry
+	dba RattataPokedexEntry
+	dba RattataPokedexEntry
+	dba RattataPokedexEntry
+	dba RattataPokedexEntry
+	dba RattataPokedexEntry
+	dba RattataPokedexEntry
+	dba RattataPokedexEntry
+	dba RattataPokedexEntry
+	dba RattataPokedexEntry
+	dba RattataPokedexEntry
+	dba RattataPokedexEntry
+	dba RattataPokedexEntry
+	dba RattataPokedexEntry
+	dba RattataPokedexEntry
+	dba RattataPokedexEntry
+	dba RattataPokedexEntry
+	dba RattataPokedexEntry
+	dba RattataPokedexEntry
+	dba RattataPokedexEntry
+	dba RattataPokedexEntry
+	dba RattataPokedexEntry
+	dba RattataPokedexEntry
+	dba RattataPokedexEntry
+	dba RattataPokedexEntry
 	assert_table_length NUM_POKEMON

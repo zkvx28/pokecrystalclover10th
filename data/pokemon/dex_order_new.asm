@@ -2,6 +2,8 @@
 
 NewPokedexOrder:
 	table_width 2, NewPokedexOrder
+	dw BLOBBOS
+	dw SOBBOLB
 	dw CHIKORITA
 	dw BAYLEEF
 	dw MEGANIUM
@@ -41,6 +43,8 @@ NewPokedexOrder:
 	dw ZUBAT
 	dw GOLBAT
 	dw CROBAT
+	dw MAKUHITA
+	dw HARIYAMA
 	dw CLEFFA
 	dw CLEFAIRY
 	dw CLEFABLE
@@ -73,6 +77,9 @@ NewPokedexOrder:
 	dw JUMPLUFF
 	dw PARAS
 	dw PARASECT
+	dw SEEDOT
+	dw NUZLEAF
+	dw SHIFTRY
 	dw POLIWAG
 	dw POLIWHIRL
 	dw POLIWRATH
@@ -107,6 +114,8 @@ NewPokedexOrder:
 	dw SUNFLORA
 	dw EXEGGCUTE
 	dw EXEGGUTOR
+	dw DRIFLOON
+	dw DRIFBLIM
 	dw SUDOWOODO
 	dw WOBBUFFET
 	dw VENONAT
@@ -131,6 +140,8 @@ NewPokedexOrder:
 	dw GROWLITHE
 	dw ARCANINE
 	dw STANTLER
+	dw SURSKIT
+	dw MASQUERAIN
 	dw MARILL
 	dw AZUMARILL
 	dw DIGLETT
@@ -148,6 +159,11 @@ NewPokedexOrder:
 	dw HITMONLEE
 	dw HITMONCHAN
 	dw HITMONTOP
+	dw ARON
+	dw LAIRON
+	dw AGGRON
+	dw MEDITITE
+	dw MEDICHAM
 	dw GIRAFARIG
 	dw TAUROS
 	dw MILTANK
@@ -179,6 +195,8 @@ NewPokedexOrder:
 	dw LANTURN
 	dw SEEL
 	dw DEWGONG
+	dw SNORUNT
+	dw GLALIE
 	dw LICKITUNG
 	dw TANGELA
 	dw EEVEE
@@ -198,17 +216,24 @@ NewPokedexOrder:
 	dw URSARING
 	dw PHANPY
 	dw DONPHAN
+	dw MAWILE
+	dw SABLEYE
 	dw MANTINE
 	dw SKARMORY
+	dw ZANGOOSE
+	dw SEVIPER
 	dw DODUO
 	dw DODRIO
 	dw PONYTA
 	dw RAPIDASH
 	dw CUBONE
 	dw MAROWAK
+	dw ORTHWORM
 	dw KANGASKHAN
 	dw RHYHORN
 	dw RHYDON
+	dw CROAGUNK
+	dw TOXICROAK
 	dw MURKROW
 	dw HOUNDOUR
 	dw HOUNDOOM
@@ -216,11 +241,15 @@ NewPokedexOrder:
 	dw MAGCARGO
 	dw SNEASEL
 	dw MISDREAVUS
+	dw SOLROCK
+	dw LUNATONE
 	dw PORYGON
 	dw PORYGON2
 	dw CHANSEY
 	dw BLISSEY
 	dw LAPRAS
+	dw SWABLU
+	dw ALTARIA
 	dw OMANYTE
 	dw OMASTAR
 	dw KABUTO

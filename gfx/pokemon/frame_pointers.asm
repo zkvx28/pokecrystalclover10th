@@ -251,4 +251,33 @@ FramesPointers:
 	dba LugiaFrames
 	dba HoOhFrames
 	dba CelebiFrames
+	dba CelebiFrames
+	dba CelebiFrames
+	dba SwabluFrames
+	dba AltariaFrames
+	dba SolrockFrames
+	dba LunatoneFrames
+	dba DrifloonFrames
+	dba DrifblimFrames
+	dba SeviperFrames
+	dba ZangooseFrames
+	dba CroagunkFrames
+	dba ToxicroakFrames
+	dba AronFrames
+	dba LaironFrames
+	dba AggronFrames
+	dba SnoruntFrames
+	dba GlalieFrames
+	dba SeedotFrames
+	dba NuzleafFrames
+	dba ShiftryFrames
+	dba MedititeFrames
+	dba MedichamFrames
+	dba MawileFrames
+	dba SableyeFrames
+	dba MakuhitaFrames
+	dba HariyamaFrames
+	dba SurskitFrames
+	dba MasquerainFrames
+	dba OrthwormFrames
 	assert_table_length NUM_POKEMON
