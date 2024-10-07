@@ -8,59 +8,131 @@
 
 ElmsLab_MapScripts:
 	def_scene_scripts
-	scene_script ElmsLabMeetElmScene, SCENE_ELMSLAB_MEET_ELM
-	scene_script ElmsLabNoop1Scene,   SCENE_ELMSLAB_CANT_LEAVE
-	scene_script ElmsLabNoop2Scene,   SCENE_ELMSLAB_NOOP
-	scene_script ElmsLabNoop3Scene,   SCENE_ELMSLAB_MEET_OFFICER
-	scene_script ElmsLabNoop4Scene,   SCENE_ELMSLAB_UNUSED
-	scene_script ElmsLabNoop5Scene,   SCENE_ELMSLAB_AIDE_GIVES_POTION
+	scene_script BeechsLabMeetBeechScene, SCENE_ELMSLAB_MEET_ELM
+	scene_script BeechsLabNoop1Scene,   SCENE_ELMSLAB_CANT_LEAVE
+	scene_script BeechsLabNoop2Scene,   SCENE_ELMSLAB_NOOP
+	scene_script BeechsLabNoop3Scene,   SCENE_ELMSLAB_MEET_OFFICER
+	scene_script BeechsLabNoop4Scene,   SCENE_ELMSLAB_UNUSED
+	scene_script BeechsLabNoop5Scene,   SCENE_ELMSLAB_AIDE_GIVES_POTION
 	scene_const SCENE_ELMSLAB_AIDE_GIVES_POKE_BALLS
 
 	def_callbacks
-	callback MAPCALLBACK_OBJECTS, ElmsLabMoveElmCallback
+	callback MAPCALLBACK_OBJECTS, BeechsLabMoveBeechCallback
 
-ElmsLabMeetElmScene:
-	sdefer ElmsLabWalkUpToElmScript
+BeechsLabMeetBeechScene:
+	sdefer BeechsLabWalkUpToBeechScript
 	end
 
-ElmsLabNoop1Scene:
+BeechsLabNoop1Scene:
 	end
 
-ElmsLabNoop2Scene:
+BeechsLabNoop2Scene:
 	end
 
-ElmsLabNoop3Scene:
+BeechsLabNoop3Scene:
 	end
 
-ElmsLabNoop4Scene:
+BeechsLabNoop4Scene:
 	end
 
-ElmsLabNoop5Scene:
+BeechsLabNoop5Scene:
 	end
 
-ElmsLabMoveElmCallback:
+BeechsLabMoveBeechCallback:
 	checkscene
 	iftrue .Skip ; not SCENE_ELMSLAB_MEET_ELM
 	moveobject ELMSLAB_ELM, 3, 4
 .Skip:
 	endcallback
 
-ElmsLabWalkUpToElmScript:
-	applymovement PLAYER, ElmsLab_WalkUpToElmMovement
+BeechsLabWalkUpToBeechScript:
+	applymovement PLAYER, BeechsLab_WalkUpToBeechMovement
+	pause 15
+	showemote EMOTE_BOLT, ELMSLAB_POKE_BALL2, 15
+	cry SOBBOLB
+	applymovement ELMSLAB_POKE_BALL2, BeechsLabSobbolbBullyBlobbos
+	playsound SFX_STRENGTH
+	earthquake 10
+	applymovement ELMSLAB_POKE_BALL1, BeechsLabBlobbosHit
+	waitsfx
+	showemote EMOTE_SAD, ELMSLAB_POKE_BALL1, 15
+	pause 30
 	showemote EMOTE_SHOCK, ELMSLAB_ELM, 15
 	turnobject ELMSLAB_ELM, RIGHT
+	turnobject PLAYER, LEFT
 	opentext
-	writetext ElmText_Intro
+	writetext BeechText_Intro
+	waitbutton
+	turnobject ELMSLAB_ELM, UP
+	turnobject PLAYER, UP
+	writetext BeechText_Intro2
+	waitbutton
+	turnobject ELMSLAB_ELM, RIGHT
+	turnobject PLAYER, LEFT
+	writetext BeechText_Intro3
 .MustSayYes:
 	yesorno
-	iftrue .ElmGetsEmail
-	writetext ElmText_Refused
+	iftrue .BeechSaidYes
+	writetext BeechText_Refused
 	sjump .MustSayYes
 
-.ElmGetsEmail:
-	writetext ElmText_Accepted
+.BeechSaidYes:
+	writetext BeechText_Accepted
 	promptbutton
-	writetext ElmText_ResearchAmbitions
+	jump .BeechGetBlobbosSobbolb
+
+.BeechGetBlobbosSobbolb:
+	closetext
+	turnobject PLAYER, UP
+	applymovement ELMSLAB_ELM, BeechsLab_BeechToBlobbos
+	disappear ELMSLAB_POKE_BALL1
+	playsound SFX_BALL_WOBBLE
+	waitsfx
+	pause 20
+	applymovement ELMSLAB_ELM, BeechsLab_BeechToSobbolb
+	disappear ELMSLAB_POKE_BALL2
+	playsound SFX_BALL_WOBBLE
+	waitsfx
+	pause 20
+	applymovement ELMSLAB_ELM, BeechsLab_BeechFacePlayer
+	pause 20
+	opentext
+	getmonname STRING_BUFFER_3, BLOBBOS
+	writetext ReceivedStarterText
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	promptbutton
+	givepoke BLOBBOS, 5, BERRY
+	closetext
+	opentext
+	getmonname STRING_BUFFER_3, SOBBOLB
+	writetext ReceivedStarterText
+	playsound SFX_CAUGHT_MON
+	waitsfx
+	promptbutton
+	closetext
+	opentext
+	givepoke SOBBOLB, 5, BERRY
+	closetext
+	opentext
+	writetext BeechText_DirectToMrPokemon
+	waitbutton
+	closetext
+	addcellnum PHONE_ELM
+	opentext
+	writetext GotBeechsNumberText
+	playsound SFX_REGISTER_PHONE_NUMBER
+	waitsfx
+	waitbutton
+	closetext
+	setevent EVENT_GOT_A_POKEMON_FROM_ELM
+	setevent EVENT_RIVAL_CHERRYGROVE_CITY
+	setscene SCENE_ELMSLAB_AIDE_GIVES_POTION
+	setmapscene NEW_BARK_TOWN, SCENE_NEWBARKTOWN_NOOP
+	end
+
+.BeechGetsEmailNext:
+	writetext BeechText_ResearchAmbitions
 	waitbutton
 	closetext
 	playsound SFX_GLASS_TING
@@ -68,81 +140,81 @@ ElmsLabWalkUpToElmScript:
 	showemote EMOTE_SHOCK, ELMSLAB_ELM, 10
 	turnobject ELMSLAB_ELM, DOWN
 	opentext
-	writetext ElmText_GotAnEmail
+	writetext BeechText_GotAnEmail
 	waitbutton
 	closetext
 	opentext
 	turnobject ELMSLAB_ELM, RIGHT
-	writetext ElmText_MissionFromMrPokemon
+	writetext BeechText_MissionFromMrPokemon
 	waitbutton
 	closetext
-	applymovement ELMSLAB_ELM, ElmsLab_ElmToDefaultPositionMovement1
+	applymovement ELMSLAB_ELM, BeechsLab_BeechToDefaultPositionMovement1
 	turnobject PLAYER, UP
-	applymovement ELMSLAB_ELM, ElmsLab_ElmToDefaultPositionMovement2
+	applymovement ELMSLAB_ELM, BeechsLab_BeechToDefaultPositionMovement2
 	turnobject PLAYER, RIGHT
 	opentext
-	writetext ElmText_ChooseAPokemon
+	writetext BeechText_ChooseAPokemon
 	waitbutton
 	setscene SCENE_ELMSLAB_CANT_LEAVE
 	closetext
 	end
 
-ProfElmScript:
+ProfBeechScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_SS_TICKET_FROM_ELM
-	iftrue ElmCheckMasterBall
+	iftrue BeechCheckMasterBall
 	checkevent EVENT_BEAT_ELITE_FOUR
-	iftrue ElmGiveTicketScript
-ElmCheckMasterBall:
+	iftrue BeechGiveTicketScript
+BeechCheckMasterBall:
 	checkevent EVENT_GOT_MASTER_BALL_FROM_ELM
-	iftrue ElmCheckEverstone
+	iftrue BeechCheckEverstone
 	checkflag ENGINE_RISINGBADGE
-	iftrue ElmGiveMasterBallScript
-ElmCheckEverstone:
+	iftrue BeechGiveMasterBallScript
+BeechCheckEverstone:
 	checkevent EVENT_GOT_EVERSTONE_FROM_ELM
-	iftrue ElmScript_CallYou
+	iftrue BeechScript_CallYou
 	checkevent EVENT_SHOWED_TOGEPI_TO_ELM
-	iftrue ElmGiveEverstoneScript
+	iftrue BeechGiveEverstoneScript
 	checkevent EVENT_TOLD_ELM_ABOUT_TOGEPI_OVER_THE_PHONE
-	iffalse ElmCheckTogepiEgg
+	iffalse BeechCheckTogepiEgg
 	loadmonindex 1, TOGEPI
 	special FindPartyMonThatSpeciesYourTrainerID
-	iftrue ShowElmTogepiScript
+	iftrue ShowBeechTogepiScript
 	loadmonindex 2, TOGETIC
 	special FindPartyMonThatSpeciesYourTrainerID
-	iftrue ShowElmTogepiScript
-	writetext ElmThoughtEggHatchedText
+	iftrue ShowBeechTogepiScript
+	writetext BeechThoughtEggHatchedText
 	waitbutton
 	closetext
 	end
 
-ElmEggHatchedScript:
+BeechEggHatchedScript:
 	loadmonindex 1, TOGEPI
 	special FindPartyMonThatSpeciesYourTrainerID
-	iftrue ShowElmTogepiScript
+	iftrue ShowBeechTogepiScript
 	loadmonindex 2, TOGETIC
 	special FindPartyMonThatSpeciesYourTrainerID
-	iftrue ShowElmTogepiScript
-	sjump ElmCheckGotEggAgain
+	iftrue ShowBeechTogepiScript
+	sjump BeechCheckGotEggAgain
 
-ElmCheckTogepiEgg:
+BeechCheckTogepiEgg:
 	checkevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE
-	iffalse ElmCheckGotEggAgain
+	iffalse BeechCheckGotEggAgain
 	checkevent EVENT_TOGEPI_HATCHED
-	iftrue ElmEggHatchedScript
-ElmCheckGotEggAgain:
+	iftrue BeechEggHatchedScript
+BeechCheckGotEggAgain:
 	checkevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE ; why are we checking it again?
-	iftrue ElmWaitingEggHatchScript
+	iftrue BeechWaitingEggHatchScript
 	checkflag ENGINE_ZEPHYRBADGE
-	iftrue ElmAideHasEggScript
+	iftrue BeechAideHasEggScript
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iftrue ElmStudyingEggScript
+	iftrue BeechStudyingEggScript
 	checkevent EVENT_GOT_MYSTERY_EGG_FROM_MR_POKEMON
-	iftrue ElmAfterTheftScript
+	iftrue BeechAfterTheftScript
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
-	iftrue ElmDescribesMrPokemonScript
-	writetext ElmText_LetYourMonBattleIt
+	iftrue BeechDescribesMrPokemonScript
+	writetext BeechText_LetYourMonBattleIt
 	waitbutton
 	closetext
 	end
@@ -153,16 +225,16 @@ LabTryToLeaveScript:
 	writetext LabWhereGoingText
 	waitbutton
 	closetext
-	applymovement PLAYER, ElmsLab_CantLeaveMovement
+	applymovement PLAYER, BeechsLab_CantLeaveMovement
 	end
 
 CyndaquilPokeBallScript:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
-	iftrue LookAtElmPokeBallScript
+	iftrue LookAtBeechPokeBallScript
 	turnobject ELMSLAB_ELM, DOWN
 	reanchormap
-	pokepic CYNDAQUIL
-	cry CYNDAQUIL
+	pokepic BLOBBOS
+	cry BLOBBOS
 	waitbutton
 	closepokepic
 	opentext
@@ -179,20 +251,20 @@ CyndaquilPokeBallScript:
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	promptbutton
-	givepoke CYNDAQUIL, 5, BERRY
+	givepoke BLOBBOS, 5, BERRY
 	closetext
 	readvar VAR_FACING
-	ifequal RIGHT, ElmDirectionsScript
+	ifequal RIGHT, BeechDirectionsScript
 	applymovement PLAYER, AfterCyndaquilMovement
-	sjump ElmDirectionsScript
+	sjump BeechDirectionsScript
 
 TotodilePokeBallScript:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
-	iftrue LookAtElmPokeBallScript
+	iftrue LookAtBeechPokeBallScript
 	turnobject ELMSLAB_ELM, DOWN
 	reanchormap
-	pokepic TOTODILE
-	cry TOTODILE
+	pokepic SOBBOLB
+	cry SOBBOLB
 	waitbutton
 	closepokepic
 	opentext
@@ -209,14 +281,14 @@ TotodilePokeBallScript:
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	promptbutton
-	givepoke TOTODILE, 5, BERRY
+	givepoke SOBBOLB, 5, BERRY
 	closetext
 	applymovement PLAYER, AfterTotodileMovement
-	sjump ElmDirectionsScript
+	sjump BeechDirectionsScript
 
 ChikoritaPokeBallScript:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
-	iftrue LookAtElmPokeBallScript
+	iftrue LookAtBeechPokeBallScript
 	turnobject ELMSLAB_ELM, DOWN
 	reanchormap
 	pokepic CHIKORITA
@@ -240,7 +312,7 @@ ChikoritaPokeBallScript:
 	givepoke CHIKORITA, 5, BERRY
 	closetext
 	applymovement PLAYER, AfterChikoritaMovement
-	sjump ElmDirectionsScript
+	sjump BeechDirectionsScript
 
 DidntChooseStarterScript:
 	writetext DidntChooseStarterText
@@ -248,27 +320,27 @@ DidntChooseStarterScript:
 	closetext
 	end
 
-ElmDirectionsScript:
+BeechDirectionsScript:
 	turnobject PLAYER, UP
 	opentext
-	writetext ElmDirectionsText1
+	writetext BeechDirectionsText1
 	waitbutton
 	closetext
 	addcellnum PHONE_ELM
 	opentext
-	writetext GotElmsNumberText
+	writetext GotBeechsNumberText
 	playsound SFX_REGISTER_PHONE_NUMBER
 	waitsfx
 	waitbutton
 	closetext
 	turnobject ELMSLAB_ELM, LEFT
 	opentext
-	writetext ElmDirectionsText2
+	writetext BeechDirectionsText2
 	waitbutton
 	closetext
 	turnobject ELMSLAB_ELM, DOWN
 	opentext
-	writetext ElmDirectionsText3
+	writetext BeechDirectionsText3
 	waitbutton
 	closetext
 	setevent EVENT_GOT_A_POKEMON_FROM_ELM
@@ -277,36 +349,36 @@ ElmDirectionsScript:
 	setmapscene NEW_BARK_TOWN, SCENE_NEWBARKTOWN_NOOP
 	end
 
-ElmDescribesMrPokemonScript:
-	writetext ElmDescribesMrPokemonText
+BeechDescribesMrPokemonScript:
+	writetext BeechDescribesMrPokemonText
 	waitbutton
 	closetext
 	end
 
-LookAtElmPokeBallScript:
+LookAtBeechPokeBallScript:
 	opentext
-	writetext ElmPokeBallText
+	writetext BeechPokeBallText
 	waitbutton
 	closetext
 	end
 
-ElmsLabHealingMachine:
+BeechsLabHealingMachine:
 	opentext
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iftrue .CanHeal
-	writetext ElmsLabHealingMachineText1
+	writetext BeechsLabHealingMachineText1
 	waitbutton
 	closetext
 	end
 
 .CanHeal:
-	writetext ElmsLabHealingMachineText2
+	writetext BeechsLabHealingMachineText2
 	yesorno
-	iftrue ElmsLabHealingMachine_HealParty
+	iftrue BeechsLabHealingMachine_HealParty
 	closetext
 	end
 
-ElmsLabHealingMachine_HealParty:
+BeechsLabHealingMachine_HealParty:
 	special StubbedTrainerRankings_Healings
 	special HealParty
 	playmusic MUSIC_NONE
@@ -317,142 +389,142 @@ ElmsLabHealingMachine_HealParty:
 	closetext
 	end
 
-ElmAfterTheftDoneScript:
+BeechAfterTheftDoneScript:
 	waitbutton
 	closetext
 	end
 
-ElmAfterTheftScript:
-	writetext ElmAfterTheftText1
+BeechAfterTheftScript:
+	writetext BeechAfterTheftText1
 	checkitem MYSTERY_EGG
-	iffalse ElmAfterTheftDoneScript
+	iffalse BeechAfterTheftDoneScript
 	promptbutton
-	writetext ElmAfterTheftText2
+	writetext BeechAfterTheftText2
 	waitbutton
 	takeitem MYSTERY_EGG
-	scall ElmJumpBackScript1
-	writetext ElmAfterTheftText3
+	scall BeechJumpBackScript1
+	writetext BeechAfterTheftText3
 	waitbutton
-	scall ElmJumpBackScript2
-	writetext ElmAfterTheftText4
+	scall BeechJumpBackScript2
+	writetext BeechAfterTheftText4
 	promptbutton
-	writetext ElmAfterTheftText5
+	writetext BeechAfterTheftText5
 	promptbutton
 	setevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	setflag ENGINE_MOBILE_SYSTEM
 	setmapscene ROUTE_29, SCENE_ROUTE29_CATCH_TUTORIAL
 	clearevent EVENT_ROUTE_30_YOUNGSTER_JOEY
 	setevent EVENT_ROUTE_30_BATTLE
-	writetext ElmAfterTheftText6
+	writetext BeechAfterTheftText6
 	waitbutton
 	closetext
 	setscene SCENE_ELMSLAB_AIDE_GIVES_POKE_BALLS
 	end
 
-ElmStudyingEggScript:
-	writetext ElmStudyingEggText
+BeechStudyingEggScript:
+	writetext BeechStudyingEggText
 	waitbutton
 	closetext
 	end
 
-ElmAideHasEggScript:
-	writetext ElmAideHasEggText
+BeechAideHasEggScript:
+	writetext BeechAideHasEggText
 	waitbutton
 	closetext
 	end
 
-ElmWaitingEggHatchScript:
-	writetext ElmWaitingEggHatchText
+BeechWaitingEggHatchScript:
+	writetext BeechWaitingEggHatchText
 	waitbutton
 	closetext
 	end
 
-ShowElmTogepiScript:
-	writetext ShowElmTogepiText1
+ShowBeechTogepiScript:
+	writetext ShowBeechTogepiText1
 	waitbutton
 	closetext
 	showemote EMOTE_SHOCK, ELMSLAB_ELM, 15
 	setevent EVENT_SHOWED_TOGEPI_TO_ELM
 	opentext
-	writetext ShowElmTogepiText2
+	writetext ShowBeechTogepiText2
 	promptbutton
-	writetext ShowElmTogepiText3
+	writetext ShowBeechTogepiText3
 	promptbutton
-ElmGiveEverstoneScript:
-	writetext ElmGiveEverstoneText1
+BeechGiveEverstoneScript:
+	writetext BeechGiveEverstoneText1
 	promptbutton
 	verbosegiveitem EVERSTONE
-	iffalse ElmScript_NoRoomForEverstone
-	writetext ElmGiveEverstoneText2
+	iffalse BeechScript_NoRoomForEverstone
+	writetext BeechGiveEverstoneText2
 	waitbutton
 	closetext
 	setevent EVENT_GOT_EVERSTONE_FROM_ELM
 	end
 
-ElmScript_CallYou:
-	writetext ElmText_CallYou
+BeechScript_CallYou:
+	writetext BeechText_CallYou
 	waitbutton
-ElmScript_NoRoomForEverstone:
+BeechScript_NoRoomForEverstone:
 	closetext
 	end
 
-ElmGiveMasterBallScript:
-	writetext ElmGiveMasterBallText1
+BeechGiveMasterBallScript:
+	writetext BeechGiveMasterBallText1
 	promptbutton
 	verbosegiveitem MASTER_BALL
 	iffalse .notdone
 	setevent EVENT_GOT_MASTER_BALL_FROM_ELM
-	writetext ElmGiveMasterBallText2
+	writetext BeechGiveMasterBallText2
 	waitbutton
 .notdone
 	closetext
 	end
 
-ElmGiveTicketScript:
-	writetext ElmGiveTicketText1
+BeechGiveTicketScript:
+	writetext BeechGiveTicketText1
 	promptbutton
 	verbosegiveitem S_S_TICKET
 	setevent EVENT_GOT_SS_TICKET_FROM_ELM
-	writetext ElmGiveTicketText2
+	writetext BeechGiveTicketText2
 	waitbutton
 	closetext
 	end
 
-ElmJumpBackScript1:
+BeechJumpBackScript1:
 	closetext
 	readvar VAR_FACING
-	ifequal DOWN, ElmJumpDownScript
-	ifequal UP, ElmJumpUpScript
-	ifequal LEFT, ElmJumpLeftScript
-	ifequal RIGHT, ElmJumpRightScript
+	ifequal DOWN, BeechJumpDownScript
+	ifequal UP, BeechJumpUpScript
+	ifequal LEFT, BeechJumpLeftScript
+	ifequal RIGHT, BeechJumpRightScript
 	end
 
-ElmJumpBackScript2:
+BeechJumpBackScript2:
 	closetext
 	readvar VAR_FACING
-	ifequal DOWN, ElmJumpUpScript
-	ifequal UP, ElmJumpDownScript
-	ifequal LEFT, ElmJumpRightScript
-	ifequal RIGHT, ElmJumpLeftScript
+	ifequal DOWN, BeechJumpUpScript
+	ifequal UP, BeechJumpDownScript
+	ifequal LEFT, BeechJumpRightScript
+	ifequal RIGHT, BeechJumpLeftScript
 	end
 
-ElmJumpUpScript:
-	applymovement ELMSLAB_ELM, ElmJumpUpMovement
+BeechJumpUpScript:
+	applymovement ELMSLAB_ELM, BeechJumpUpMovement
 	opentext
 	end
 
-ElmJumpDownScript:
-	applymovement ELMSLAB_ELM, ElmJumpDownMovement
+BeechJumpDownScript:
+	applymovement ELMSLAB_ELM, BeechJumpDownMovement
 	opentext
 	end
 
-ElmJumpLeftScript:
-	applymovement ELMSLAB_ELM, ElmJumpLeftMovement
+BeechJumpLeftScript:
+	applymovement ELMSLAB_ELM, BeechJumpLeftMovement
 	opentext
 	end
 
-ElmJumpRightScript:
-	applymovement ELMSLAB_ELM, ElmJumpRightMovement
+BeechJumpRightScript:
+	applymovement ELMSLAB_ELM, BeechJumpRightMovement
 	opentext
 	end
 
@@ -513,7 +585,7 @@ AideScript_ReceiveTheBalls:
 	jumpstd ReceiveItemScript
 	end
 
-ElmsAideScript:
+BeechsAideScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE
@@ -553,10 +625,10 @@ MeetCopScript:
 CopScript:
 	turnobject ELMSLAB_OFFICER, LEFT
 	opentext
-	writetext ElmsLabOfficerText1
+	writetext BeechsLabOfficerText1
 	promptbutton
 	special NameRival
-	writetext ElmsLabOfficerText2
+	writetext BeechsLabOfficerText2
 	waitbutton
 	closetext
 	applymovement ELMSLAB_OFFICER, OfficerLeavesMovement
@@ -564,7 +636,7 @@ CopScript:
 	setscene SCENE_ELMSLAB_NOOP
 	end
 
-ElmsLabWindow:
+BeechsLabWindow:
 	opentext
 	checkflag ENGINE_FLYPOINT_VIOLET
 	iftrue .Normal
@@ -573,42 +645,42 @@ ElmsLabWindow:
 	sjump .Normal
 
 .BreakIn:
-	writetext ElmsLabWindowText2
+	writetext BeechsLabWindowText2
 	waitbutton
 	closetext
 	end
 
 .Normal:
-	writetext ElmsLabWindowText1
+	writetext BeechsLabWindowText1
 	waitbutton
 	closetext
 	end
 
-ElmsLabTravelTip1:
-	jumptext ElmsLabTravelTip1Text
+BeechsLabTravelTip1:
+	jumptext BeechsLabTravelTip1Text
 
-ElmsLabTravelTip2:
-	jumptext ElmsLabTravelTip2Text
+BeechsLabTravelTip2:
+	jumptext BeechsLabTravelTip2Text
 
-ElmsLabTravelTip3:
-	jumptext ElmsLabTravelTip3Text
+BeechsLabTravelTip3:
+	jumptext BeechsLabTravelTip3Text
 
-ElmsLabTravelTip4:
-	jumptext ElmsLabTravelTip4Text
+BeechsLabTravelTip4:
+	jumptext BeechsLabTravelTip4Text
 
-ElmsLabTrashcan:
-	jumptext ElmsLabTrashcanText
+BeechsLabTrashcan:
+	jumptext BeechsLabTrashcanText
 
-ElmsLabPC:
-	jumptext ElmsLabPCText
+BeechsLabPC:
+	jumptext BeechsLabPCText
 
-ElmsLabTrashcan2: ; unreferenced
+BeechsLabTrashcan2: ; unreferenced
 	jumpstd TrashCanScript
 
-ElmsLabBookshelf:
+BeechsLabBookshelf:
 	jumpstd DifficultBookshelfScript
 
-ElmsLab_WalkUpToElmMovement:
+BeechsLab_WalkUpToBeechMovement:
 	step UP
 	step UP
 	step UP
@@ -616,10 +688,9 @@ ElmsLab_WalkUpToElmMovement:
 	step UP
 	step UP
 	step UP
-	turn_head LEFT
 	step_end
 
-ElmsLab_CantLeaveMovement:
+BeechsLab_CantLeaveMovement:
 	step UP
 	step_end
 
@@ -667,35 +738,63 @@ AideWalksLeft2:
 	turn_head DOWN
 	step_end
 
-ElmJumpUpMovement:
+BeechJumpUpMovement:
 	fix_facing
 	big_step UP
 	remove_fixed_facing
 	step_end
 
-ElmJumpDownMovement:
+BeechJumpDownMovement:
 	fix_facing
 	big_step DOWN
 	remove_fixed_facing
 	step_end
 
-ElmJumpLeftMovement:
+BeechJumpLeftMovement:
 	fix_facing
 	big_step LEFT
 	remove_fixed_facing
 	step_end
 
-ElmJumpRightMovement:
+BeechJumpRightMovement:
 	fix_facing
 	big_step RIGHT
 	remove_fixed_facing
 	step_end
 
-ElmsLab_ElmToDefaultPositionMovement1:
+BeechsLab_BeechToBlobbos:
+	step UP
+	turn_head RIGHT
+	step_end
+
+BeechsLab_BeechToSobbolb:
+	step RIGHT
+	step_end
+
+BeechsLab_BeechFacePlayer:
+	turn_head DOWN
+	step_end
+
+BeechsLabSobbolbBullyBlobbos:
+	fast_slide_step LEFT
+	step_end
+
+BeechsLabBlobbosHit:
+	fix_facing
+	fast_slide_step LEFT
+	step_sleep 8
+	step_sleep 8
+	step_sleep 8
+	step_sleep 8
+	remove_fixed_facing
+	slow_step RIGHT
+	step_end
+
+BeechsLab_BeechToDefaultPositionMovement1:
 	step UP
 	step_end
 
-ElmsLab_ElmToDefaultPositionMovement2:
+BeechsLab_BeechToDefaultPositionMovement2:
 	step RIGHT
 	step RIGHT
 	step UP
@@ -723,58 +822,107 @@ AfterChikoritaMovement:
 	turn_head UP
 	step_end
 
-ElmText_Intro:
-	text "ELM: <PLAY_G>!"
-	line "There you are!"
+BeechText_Intro:
+	text "BEECH: Yo!"
+	line "It's <PLAY_G>!"
+	cont "Konnichiwassup!"
 
-	para "I needed to ask"
-	line "you a favor."
+	para "I need your"
+	line "help, <PLAY_G>."
 
-	para "I'm conducting new"
-	line "#MON research"
+	para "As you may know,"
+	line "at this lab,"
 
-	para "right now. I was"
-	line "wondering if you"
+	para "I conduct dream"
+	line "research."
 
-	para "could help me with"
-	line "it, <PLAY_G>."
+	para "My DREAM MACHINE"
+	line "lets me analyse"
+	cont "#MON dreams."
 
-	para "You see…"
+	para "When I used the"
+	line "machine on"
+	cont "BLOBBOS,"
+	cont "another #MON"
+	cont "popped out!"
 
-	para "I'm writing a"
-	line "paper that I want"
+	para "But I've never"
+	line "seen this #MON"
+	cont "before."
 
-	para "to present at a"
-	line "conference."
+	para "I've named it"
+	line "SOBBOLB!"
 
-	para "But there are some"
-	line "things I don't"
-
-	para "quite understand"
-	line "yet."
-
-	para "So!"
-
-	para "I'd like you to"
-	line "raise a #MON"
-
-	para "that I recently"
-	line "caught."
+	para "But SOBBOLB is"
+	line "a bully."
 	done
 
-ElmText_Accepted:
+BeechText_Intro2:
+	text "BLOBBOS and"
+	line "SOBBOLB, the two"
+	cont "of them hate"
+	cont "each other, man!"
+	done
+
+BeechText_Intro3:
+	text "<PLAY_G>, can"
+	line "you raise these"
+	cont "two to get"
+	cont "along for me?"
+	done
+
+BeechText_Accepted:
 	text "Thanks, <PLAY_G>!"
 
-	para "You're a great"
-	line "help!"
+	para "You're doing me"
+	line "a massive favor."
 	done
 
-ElmText_Refused:
-	text "But… Please, I"
-	line "need your help!"
+BeechText_Refused:
+	text "Don't be like that,"
+	line "<PLAY_G>!"
 	done
 
-ElmText_ResearchAmbitions:
+BeechText_DirectToMrPokemon:
+	text "One more thing,"
+	line "<PLAY_G>."
+
+	para "I have an ac-"
+	line "quaintance named"
+	cont "MR. #MON."
+
+	para "He lives nearby,"
+	line "on ROUTE 30."
+
+	para "He's been spend-"
+	line "ing his retire-"
+	cont "ment doing all"
+	cont "sorts of #MON"
+	cont "research."
+
+	para "The guy's a bit"
+	line "of a crank, but"
+	cont "he often comes"
+	cont "up with cool"
+	cont "findings."
+
+	para "Anyway, he's"
+	line "called me over"
+	cont "about something,"
+	cont "but I'm super busy"
+	cont "A-T-M."
+
+	para "You'll go in"
+	line "my place, won't"
+	cont "you <PLAY_G>?"
+
+	para "Here, take my"
+	line "number in case you"
+	cont "need to reach me."
+
+	done
+
+BeechText_ResearchAmbitions:
 	text "When I announce my"
 	line "findings, I'm sure"
 
@@ -788,7 +936,7 @@ ElmText_ResearchAmbitions:
 	line "it!"
 	done
 
-ElmText_GotAnEmail:
+BeechText_GotAnEmail:
 	text "Oh, hey! I got an"
 	line "e-mail!"
 
@@ -798,7 +946,7 @@ ElmText_GotAnEmail:
 	para "Okay…"
 	done
 
-ElmText_MissionFromMrPokemon:
+BeechText_MissionFromMrPokemon:
 	text "Hey, listen."
 
 	para "I have an acquain-"
@@ -831,7 +979,7 @@ ElmText_MissionFromMrPokemon:
 	line "go in our place?"
 	done
 
-ElmText_ChooseAPokemon:
+BeechText_ChooseAPokemon:
 	text "I want you to"
 	line "raise one of the"
 
@@ -845,37 +993,37 @@ ElmText_ChooseAPokemon:
 	para "Go on. Pick one!"
 	done
 
-ElmText_LetYourMonBattleIt:
+BeechText_LetYourMonBattleIt:
 	text "If a wild #MON"
 	line "appears, let your"
 	cont "#MON battle it!"
 	done
 
 LabWhereGoingText:
-	text "ELM: Wait! Where"
+	text "BEECH: Wait! Where"
 	line "are you going?"
 	done
 
 TakeCyndaquilText:
-	text "ELM: You'll take"
+	text "BEECH: You'll take"
 	line "CYNDAQUIL, the"
 	cont "fire #MON?"
 	done
 
 TakeTotodileText:
-	text "ELM: Do you want"
+	text "BEECH: Do you want"
 	line "TOTODILE, the"
 	cont "water #MON?"
 	done
 
 TakeChikoritaText:
-	text "ELM: So, you like"
+	text "BEECH: So, you like"
 	line "CHIKORITA, the"
 	cont "grass #MON?"
 	done
 
 DidntChooseStarterText:
-	text "ELM: Think it over"
+	text "BEECH: Think it over"
 	line "carefully."
 
 	para "Your partner is"
@@ -883,7 +1031,7 @@ DidntChooseStarterText:
 	done
 
 ChoseStarterText:
-	text "ELM: I think"
+	text "BEECH: I think"
 	line "that's a great"
 	cont "#MON too!"
 	done
@@ -895,7 +1043,7 @@ ReceivedStarterText:
 	text "!"
 	done
 
-ElmDirectionsText1:
+BeechDirectionsText1:
 	text "MR.#MON lives a"
 	line "little bit beyond"
 
@@ -915,7 +1063,7 @@ ElmDirectionsText1:
 	line "anything comes up!"
 	done
 
-ElmDirectionsText2:
+BeechDirectionsText2:
 	text "If your #MON is"
 	line "hurt, you should"
 
@@ -926,44 +1074,47 @@ ElmDirectionsText2:
 	line "it anytime."
 	done
 
-ElmDirectionsText3:
+BeechDirectionsText3:
 	text "<PLAY_G>, I'm"
 	line "counting on you!"
 	done
 
-GotElmsNumberText:
-	text "<PLAYER> got ELM's"
+GotBeechsNumberText:
+	text "<PLAYER> got BEECH's"
 	line "phone number."
 	done
 
-ElmDescribesMrPokemonText:
-	text "MR.#MON goes"
-	line "everywhere and"
-	cont "finds rarities."
+BeechDescribesMrPokemonText:
+	text "I first heard"
+	line "about MR.#MON"
+	cont "from ELM, who I"
+	cont "bought this"
+	cont "building from."
 
-	para "Too bad they're"
-	line "just rare and"
-	cont "not very useful…"
+	para "He was pretty"
+	line "dismissive about"
+	cont "him, but I think"
+	cont "MR.#MON's cool."
 	done
 
-ElmPokeBallText:
+BeechPokeBallText:
 	text "It contains a"
 	line "#MON caught by"
-	cont "PROF.ELM."
+	cont "PROF.BEECH."
 	done
 
-ElmsLabHealingMachineText1:
+BeechsLabHealingMachineText1:
 	text "I wonder what this"
 	line "does?"
 	done
 
-ElmsLabHealingMachineText2:
+BeechsLabHealingMachineText2:
 	text "Would you like to"
 	line "heal your #MON?"
 	done
 
-ElmAfterTheftText1:
-	text "ELM: <PLAY_G>, this"
+BeechAfterTheftText1:
+	text "BEECH: <PLAY_G>, this"
 	line "is terrible…"
 
 	para "Oh, yes, what was"
@@ -971,17 +1122,17 @@ ElmAfterTheftText1:
 	cont "discovery?"
 	done
 
-ElmAfterTheftText2:
+BeechAfterTheftText2:
 	text "<PLAYER> handed"
 	line "the MYSTERY EGG to"
-	cont "PROF.ELM."
+	cont "PROF.BEECH."
 	done
 
-ElmAfterTheftText3:
-	text "ELM: This?"
+BeechAfterTheftText3:
+	text "BEECH: This?"
 	done
 
-ElmAfterTheftText4:
+BeechAfterTheftText4:
 	text "But… Is it a"
 	line "#MON EGG?"
 
@@ -989,8 +1140,8 @@ ElmAfterTheftText4:
 	line "great discovery!"
 	done
 
-ElmAfterTheftText5:
-	text "ELM: What?!?"
+BeechAfterTheftText5:
+	text "BEECH: What?!?"
 
 	para "PROF.OAK gave you"
 	line "a #DEX?"
@@ -1023,7 +1174,7 @@ ElmAfterTheftText5:
 	cont "in VIOLET CITY."
 	done
 
-ElmAfterTheftText6:
+BeechAfterTheftText6:
 	text "…<PLAY_G>. The"
 	line "road to the"
 
@@ -1035,16 +1186,16 @@ ElmAfterTheftText6:
 	cont "talk to your mom."
 	done
 
-ElmStudyingEggText:
-	text "ELM: Don't give"
+BeechStudyingEggText:
+	text "BEECH: Don't give"
 	line "up! I'll call if"
 
 	para "I learn anything"
 	line "about that EGG!"
 	done
 
-ElmAideHasEggText:
-	text "ELM: <PLAY_G>?"
+BeechAideHasEggText:
+	text "BEECH: <PLAY_G>?"
 	line "Didn't you meet my"
 	cont "assistant?"
 
@@ -1059,12 +1210,12 @@ ElmAideHasEggText:
 	cont "catch him there."
 	done
 
-ElmWaitingEggHatchText:
-	text "ELM: Hey, has that"
+BeechWaitingEggHatchText:
+	text "BEECH: Hey, has that"
 	line "EGG changed any?"
 	done
 
-ElmThoughtEggHatchedText:
+BeechThoughtEggHatchedText:
 	text "<PLAY_G>? I thought"
 	line "the EGG hatched."
 
@@ -1072,17 +1223,17 @@ ElmThoughtEggHatchedText:
 	line "#MON?"
 	done
 
-ShowElmTogepiText1:
-	text "ELM: <PLAY_G>, you"
+ShowBeechTogepiText1:
+	text "BEECH: <PLAY_G>, you"
 	line "look great!"
 	done
 
-ShowElmTogepiText2:
+ShowBeechTogepiText2:
 	text "What?"
 	line "That #MON!?!"
 	done
 
-ShowElmTogepiText3:
+ShowBeechTogepiText3:
 	text "The EGG hatched!"
 	line "So, #MON are"
 	cont "born from EGGS…"
@@ -1095,7 +1246,7 @@ ShowElmTogepiText3:
 	cont "to be done."
 	done
 
-ElmGiveEverstoneText1:
+BeechGiveEverstoneText1:
 	text "Thanks, <PLAY_G>!"
 	line "You're helping"
 
@@ -1107,7 +1258,7 @@ ElmGiveEverstoneText1:
 	cont "our appreciation."
 	done
 
-ElmGiveEverstoneText2:
+BeechGiveEverstoneText2:
 	text "That's an"
 	line "EVERSTONE."
 
@@ -1126,8 +1277,8 @@ ElmGiveEverstoneText2:
 	cont "to evolve."
 	done
 
-ElmText_CallYou:
-	text "ELM: <PLAY_G>, I'll"
+BeechText_CallYou:
+	text "BEECH: <PLAY_G>, I'll"
 	line "call you if any-"
 	cont "thing comes up."
 	done
@@ -1146,8 +1297,8 @@ AideText_AfterTheft:
 	line "itself."
 	done
 
-ElmGiveMasterBallText1:
-	text "ELM: Hi, <PLAY_G>!"
+BeechGiveMasterBallText1:
+	text "BEECH: Hi, <PLAY_G>!"
 	line "Thanks to you, my"
 
 	para "research is going"
@@ -1158,7 +1309,7 @@ ElmGiveMasterBallText1:
 	cont "appreciation."
 	done
 
-ElmGiveMasterBallText2:
+BeechGiveMasterBallText2:
 	text "The MASTER BALL is"
 	line "the best!"
 
@@ -1179,8 +1330,8 @@ ElmGiveMasterBallText2:
 	line "can, <PLAY_G>!"
 	done
 
-ElmGiveTicketText1:
-	text "ELM: <PLAY_G>!"
+BeechGiveTicketText1:
+	text "BEECH: <PLAY_G>!"
 	line "There you are!"
 
 	para "I called because I"
@@ -1194,7 +1345,7 @@ ElmGiveTicketText1:
 	line "#MON in KANTO."
 	done
 
-ElmGiveTicketText2:
+BeechGiveTicketText2:
 	text "The ship departs"
 	line "from OLIVINE CITY."
 
@@ -1209,10 +1360,10 @@ ElmGiveTicketText2:
 	line "PROF.OAK in KANTO!"
 	done
 
-ElmsLabMonEggText: ; unreferenced
+BeechsLabMonEggText: ; unreferenced
 	text "It's the #MON"
 	line "EGG being studied"
-	cont "by PROF.ELM."
+	cont "by PROF.BEECH."
 	done
 
 AideText_GiveYouPotion:
@@ -1222,9 +1373,21 @@ AideText_GiveYouPotion:
 	done
 
 AideText_AlwaysBusy:
-	text "There are only two"
-	line "of us, so we're"
-	cont "always busy."
+	text "Dream research"
+	line "historically"
+	cont "pays poorly."
+
+	para "But recently,"
+	line "we attracted a"
+	cont "wealthy sponsor,"
+	cont "and we've been"
+	cont "able to work non-"
+	cont "stop!"
+
+	para "Although I don't"
+	line "know that much"
+	cont "about our sponsor,"
+	cont "mind you…"
 	done
 
 AideText_TheftTestimony:
@@ -1269,13 +1432,13 @@ AideText_ExplainBalls:
 	cont "to get them."
 	done
 
-ElmsLabOfficerText1:
+BeechsLabOfficerText1:
 	text "I heard a #MON"
 	line "was stolen here…"
 
 	para "I was just getting"
 	line "some information"
-	cont "from PROF.ELM."
+	cont "from PROF.BEECH."
 
 	para "Apparently, it was"
 	line "a young male with"
@@ -1290,7 +1453,7 @@ ElmsLabOfficerText1:
 	line "get his name?"
 	done
 
-ElmsLabOfficerText2:
+BeechsLabOfficerText2:
 	text "OK! So <RIVAL>"
 	line "was his name."
 
@@ -1298,19 +1461,19 @@ ElmsLabOfficerText2:
 	line "my investigation!"
 	done
 
-ElmsLabWindowText1:
+BeechsLabWindowText1:
 	text "The window's open."
 
 	para "A pleasant breeze"
 	line "is blowing in."
 	done
 
-ElmsLabWindowText2:
+BeechsLabWindowText2:
 	text "He broke in"
 	line "through here!"
 	done
 
-ElmsLabTravelTip1Text:
+BeechsLabTravelTip1Text:
 	text "<PLAYER> opened a"
 	line "book."
 
@@ -1320,7 +1483,7 @@ ElmsLabTravelTip1Text:
 	line "open the MENU."
 	done
 
-ElmsLabTravelTip2Text:
+BeechsLabTravelTip2Text:
 	text "<PLAYER> opened a"
 	line "book."
 
@@ -1330,7 +1493,7 @@ ElmsLabTravelTip2Text:
 	line "with SAVE!"
 	done
 
-ElmsLabTravelTip3Text:
+BeechsLabTravelTip3Text:
 	text "<PLAYER> opened a"
 	line "book."
 
@@ -1341,7 +1504,7 @@ ElmsLabTravelTip3Text:
 	cont "move items."
 	done
 
-ElmsLabTravelTip4Text:
+BeechsLabTravelTip4Text:
 	text "<PLAYER> opened a"
 	line "book."
 
@@ -1354,13 +1517,13 @@ ElmsLabTravelTip4Text:
 	line "moves."
 	done
 
-ElmsLabTrashcanText:
+BeechsLabTrashcanText:
 	text "The wrapper from"
-	line "the snack PROF.ELM"
+	line "the snack PROF.BEECH"
 	cont "ate is in there…"
 	done
 
-ElmsLabPCText:
+BeechsLabPCText:
 	text "OBSERVATIONS ON"
 	line "#MON EVOLUTION"
 
@@ -1386,27 +1549,27 @@ ElmsLab_MapEvents:
 	coord_event  5,  8, SCENE_ELMSLAB_AIDE_GIVES_POKE_BALLS, AideScript_WalkBalls2
 
 	def_bg_events
-	bg_event  2,  1, BGEVENT_READ, ElmsLabHealingMachine
-	bg_event  6,  1, BGEVENT_READ, ElmsLabBookshelf
-	bg_event  7,  1, BGEVENT_READ, ElmsLabBookshelf
-	bg_event  8,  1, BGEVENT_READ, ElmsLabBookshelf
-	bg_event  9,  1, BGEVENT_READ, ElmsLabBookshelf
-	bg_event  0,  7, BGEVENT_READ, ElmsLabTravelTip1
-	bg_event  1,  7, BGEVENT_READ, ElmsLabTravelTip2
-	bg_event  2,  7, BGEVENT_READ, ElmsLabTravelTip3
-	bg_event  3,  7, BGEVENT_READ, ElmsLabTravelTip4
-	bg_event  6,  7, BGEVENT_READ, ElmsLabBookshelf
-	bg_event  7,  7, BGEVENT_READ, ElmsLabBookshelf
-	bg_event  8,  7, BGEVENT_READ, ElmsLabBookshelf
-	bg_event  9,  7, BGEVENT_READ, ElmsLabBookshelf
-	bg_event  9,  3, BGEVENT_READ, ElmsLabTrashcan
-	bg_event  5,  0, BGEVENT_READ, ElmsLabWindow
-	bg_event  3,  5, BGEVENT_DOWN, ElmsLabPC
+	bg_event  2,  1, BGEVENT_READ, BeechsLabHealingMachine
+	bg_event  6,  1, BGEVENT_READ, BeechsLabBookshelf
+	bg_event  7,  1, BGEVENT_READ, BeechsLabBookshelf
+	bg_event  8,  1, BGEVENT_READ, BeechsLabBookshelf
+	bg_event  9,  1, BGEVENT_READ, BeechsLabBookshelf
+	bg_event  0,  7, BGEVENT_READ, BeechsLabTravelTip1
+	bg_event  1,  7, BGEVENT_READ, BeechsLabTravelTip2
+	bg_event  2,  7, BGEVENT_READ, BeechsLabTravelTip3
+	bg_event  3,  7, BGEVENT_READ, BeechsLabTravelTip4
+	bg_event  6,  7, BGEVENT_READ, BeechsLabBookshelf
+	bg_event  7,  7, BGEVENT_READ, BeechsLabBookshelf
+	bg_event  8,  7, BGEVENT_READ, BeechsLabBookshelf
+	bg_event  9,  7, BGEVENT_READ, BeechsLabBookshelf
+	bg_event  1,  5, BGEVENT_READ, BeechsLabTrashcan
+	bg_event  5,  0, BGEVENT_READ, BeechsLabWindow
+	bg_event  3,  5, BGEVENT_DOWN, BeechsLabPC
 
 	def_object_events
-	object_event  5,  2, SPRITE_ELM, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ProfElmScript, -1
-	object_event  2,  9, SPRITE_SCIENTIST, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ElmsAideScript, EVENT_ELMS_AIDE_IN_LAB
-	object_event  6,  3, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CyndaquilPokeBallScript, EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
-	object_event  7,  3, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TotodilePokeBallScript, EVENT_TOTODILE_POKEBALL_IN_ELMS_LAB
-	object_event  8,  3, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ChikoritaPokeBallScript, EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
+	object_event  5,  2, SPRITE_ELM, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ProfBeechScript, -1
+	object_event  2,  9, SPRITE_SCIENTIST, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, BeechsAideScript, EVENT_ELMS_AIDE_IN_LAB
+	object_event  4,  3, SPRITE_POKE_BALL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CyndaquilPokeBallScript, EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
+	object_event  6,  3, SPRITE_POKE_BALL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TotodilePokeBallScript, EVENT_TOTODILE_POKEBALL_IN_ELMS_LAB
+	object_event  0,  0, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ChikoritaPokeBallScript, EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
 	object_event  5,  3, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CopScript, EVENT_COP_IN_ELMS_LAB

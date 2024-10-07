@@ -44,6 +44,7 @@ MeetMomScript:
 	setscene SCENE_PLAYERSHOUSE1F_NOOP
 	setevent EVENT_PLAYERS_HOUSE_MOM_1
 	clearevent EVENT_PLAYERS_HOUSE_MOM_2
+	setevent EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
 	writetext MomGivesPokegearText
 	promptbutton
 	special SetDayOfWeek
@@ -214,7 +215,7 @@ ElmsLookingForYouText:
 	text "Oh, <PLAYER>…! Our"
 	line "neighbor, PROF."
 
-	para "ELM, was looking"
+	para "BEECH, was looking"
 	line "for you."
 
 	para "He said he wanted"
@@ -291,15 +292,15 @@ InstructionsNextText:
 	done
 
 HurryUpElmIsWaitingText:
-	text "PROF.ELM is wait-"
-	line "ing for you."
+	text "PROF.BEECH is"
+	line "waiting."
 
 	para "Hurry up, baby!"
 	done
 
 SoWhatWasProfElmsErrandText:
 	text "So, what was PROF."
-	line "ELM's errand?"
+	line "BEECH's errand?"
 
 	para "…"
 
@@ -345,7 +346,7 @@ NeighborText:
 	line "adamant about"
 
 	para "becoming PROF."
-	line "ELM's assistant."
+	line "BEECH's aide."
 
 	para "She really loves"
 	line "#MON!"

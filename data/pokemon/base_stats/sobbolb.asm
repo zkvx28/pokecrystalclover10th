@@ -1,6 +1,6 @@
 	db SOBBOLB ; 253
 
-	db  83, 119, 103,  83, 129,  92
+	db  22,  20,  18,  34,  44,  14
 	;   hp  atk  def  spd  sat  sdf
 
 	db FIRE, PSYCHIC_TYPE ; type
@@ -13,7 +13,7 @@
 	db 5 ; unknown 2
 	INCBIN "gfx/pokemon/bulbasaur/front.dimensions"
 	dw NULL, NULL ; unused (beta front/back pics)
-	db GROWTH_SLOW ; growth rate
+	db GROWTH_FAST ; growth rate
 	dn EGG_DITTO, EGG_DITTO ; egg groups
 
 	; tm/hm learnset

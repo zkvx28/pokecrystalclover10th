@@ -1435,39 +1435,39 @@ CelebiEvosAttacks:
 
 BlobbosEvosAttacks:
 	db 0 ; no more evolutions
-	db 1, ROCK_THROW
-	db 1, ICY_WIND
-	db 1, REST
-	db 7, SING
-	db 10, SNORE
-	db 14, BIDE
-	db 18, ROLLOUT
-	db 22, ICE_BEAM
-	db 25, DEFENSE_CURL
-	db 29, ROCK_SLIDE
-	db 34, AMNESIA
-	db 37, ENDURE
-	db 40, TRANSFORM
-	db 45, BLIZZARD
-	db 50, FISSURE
+	dbw 1, ROCK_THROW
+	dbw 1, ICY_WIND
+	dbw 1, REST
+	dbw 7, SING
+	dbw 10, SNORE
+	dbw 14, BIDE
+	dbw 18, ROLLOUT
+	dbw 22, ICE_BEAM
+	dbw 25, DEFENSE_CURL
+	dbw 29, ROCK_SLIDE
+	dbw 34, AMNESIA
+	dbw 37, ENDURE
+	dbw 40, TRANSFORM
+	dbw 45, BLIZZARD
+	dbw 50, FISSURE
 	db 0 ; no more level-up moves
 
 SobbolbEvosAttacks:
 	db 0 ; no more evolutions
-	db 1, PSYWAVE
-	db 1, EMBER
-	db 8, MEDITATE
-	db 12, NIGHTMARE
-	db 15, CONFUSION
-	db 19, SWIFT
-	db 22, FLAME_WHEEL
-	db 26, NIGHT_SHADE
-	db 29, FOCUS_ENERGY
-	db 33, DREAM_EATER
-	db 36, SWORDS_DANCE
-	db 40, PSYCHIC_M
-	db 45, EXPLOSION
-	db 50, SACRED_FIRE
+	dbw 1, PSYWAVE
+	dbw 1, EMBER
+	dbw 8, MEDITATE
+	dbw 12, NIGHTMARE
+	dbw 15, CONFUSION
+	dbw 19, SWIFT
+	dbw 22, FLAME_WHEEL
+	dbw 26, NIGHT_SHADE
+	dbw 29, FOCUS_ENERGY
+	dbw 33, DREAM_EATER
+	dbw 36, SWORDS_DANCE
+	dbw 40, PSYCHIC_M
+	dbw 45, EXPLOSION
+	dbw 50, SACRED_FIRE
 	db 0 ; no more level-up moves
 
 SwabluEvosAttacks:
