@@ -1,41 +1,50 @@
 ElmPhoneHealYourMonText:
 	text "Yo, <PLAY_G>?"
 
-	para "Try not to overdo"
-	line "it."
+	para "Don't work too"
+	line "hard, man."
 
-	para "Be sure to heal"
-	line "your #MON if"
-	cont "they are hurt."
+	para "Make sure to"
+	line "stop and rest"
+	cont "from time to time."
 	done
 
 ElmPhoneSawMrPokemonText:
 	text "Yo, <PLAY_G>?"
 
-	para "Did you meet MR."
-	line "#MON? Great!"
-	cont "Come back safely!"
+	para "You met MR.#MON"
+	line "already?"
+
+	para "Come back here"
+	line "soon and tell"
+	cont "me what he had"
+	cont "to say!"
 	done
 
 ElmPhonePokemonStolenText:
-	text "<PLAY_G>? I'm very"
-	line "upset now."
+	text "<PLAY_G>? I'm"
+	line "totally fuming."
 
 	para "We had a #MON"
 	line "stolen from here."
 
-	para "How could anyone"
-	line "do that?"
+	para "What sort of"
+	line "freak would do"
+	cont "that?"
 	done
 
 ElmPhoneCheckingTheEggText:
 	text "Yo, <PLAY_G>?"
 
-	para "We're checking the"
-	line "EGG now. It does"
+	para "We're still"
+	line "looking into the"
+	cont "INCUBUS ORB right"
+	cont "now."
 
-	para "appear to be a"
-	line "#MON EGG."
+	para "I wonder what the"
+	line "guy who auctioned"
+	cont "it off is like."
+
 	done
 
 ElmPhoneAssistantText:
@@ -130,17 +139,11 @@ ElmPhoneDiscoveredPokerusText:
 	done
 
 ElmPhoneDisasterText:
-	text "H-hello? <PLAY_G>?"
-	line "It's a disaster!"
+	text "<PLAY_G>! Some-"
+	line "thing happened!"
 
-	para "Uh, um, it's just"
-	line "terrible!"
-
-	para "What should I do?"
-	line "It… Oh, no…"
-
-	para "Please get back"
-	line "here now!"
+	para "Get back here as"
+	line "soon as possible!"
 	done
 
 ElmPhoneEggAssistantText:

@@ -63,10 +63,12 @@ BeechsLabWalkUpToBeechScript:
 	opentext
 	writetext BeechText_Intro
 	waitbutton
+	pause 4
 	turnobject ELMSLAB_ELM, UP
 	turnobject PLAYER, UP
 	writetext BeechText_Intro2
 	waitbutton
+	pause 4
 	turnobject ELMSLAB_ELM, RIGHT
 	turnobject PLAYER, LEFT
 	writetext BeechText_Intro3
@@ -168,46 +170,10 @@ ProfBeechScript:
 	iftrue BeechGiveTicketScript
 BeechCheckMasterBall:
 	checkevent EVENT_GOT_MASTER_BALL_FROM_ELM
-	iftrue BeechCheckEverstone
+	iftrue BeechTasks
 	checkflag ENGINE_RISINGBADGE
 	iftrue BeechGiveMasterBallScript
-BeechCheckEverstone:
-	checkevent EVENT_GOT_EVERSTONE_FROM_ELM
-	iftrue BeechScript_CallYou
-	checkevent EVENT_SHOWED_TOGEPI_TO_ELM
-	iftrue BeechGiveEverstoneScript
-	checkevent EVENT_TOLD_ELM_ABOUT_TOGEPI_OVER_THE_PHONE
-	iffalse BeechCheckTogepiEgg
-	loadmonindex 1, TOGEPI
-	special FindPartyMonThatSpeciesYourTrainerID
-	iftrue ShowBeechTogepiScript
-	loadmonindex 2, TOGETIC
-	special FindPartyMonThatSpeciesYourTrainerID
-	iftrue ShowBeechTogepiScript
-	writetext BeechThoughtEggHatchedText
-	waitbutton
-	closetext
-	end
-
-BeechEggHatchedScript:
-	loadmonindex 1, TOGEPI
-	special FindPartyMonThatSpeciesYourTrainerID
-	iftrue ShowBeechTogepiScript
-	loadmonindex 2, TOGETIC
-	special FindPartyMonThatSpeciesYourTrainerID
-	iftrue ShowBeechTogepiScript
-	sjump BeechCheckGotEggAgain
-
-BeechCheckTogepiEgg:
-	checkevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE
-	iffalse BeechCheckGotEggAgain
-	checkevent EVENT_TOGEPI_HATCHED
-	iftrue BeechEggHatchedScript
-BeechCheckGotEggAgain:
-	checkevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE ; why are we checking it again?
-	iftrue BeechWaitingEggHatchScript
-	checkflag ENGINE_ZEPHYRBADGE
-	iftrue BeechAideHasEggScript
+BeechTasks:
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	iftrue BeechStudyingEggScript
 	checkevent EVENT_GOT_MYSTERY_EGG_FROM_MR_POKEMON
@@ -1114,12 +1080,12 @@ BeechsLabHealingMachineText2:
 	done
 
 BeechAfterTheftText1:
-	text "BEECH: <PLAY_G>, this"
-	line "is terrible…"
+	text "BEECH: <PLAY_G>,"
+	line "this sucks."
 
-	para "Oh, yes, what was"
-	line "MR.#MON's big"
-	cont "discovery?"
+	para "Oh yeah, what"
+	line "did MR.#MON"
+	cont "have to say?"
 	done
 
 BeechAfterTheftText2:
@@ -1129,69 +1095,55 @@ BeechAfterTheftText2:
 	done
 
 BeechAfterTheftText3:
-	text "BEECH: This?"
+	text "BEECH: Wow!"
+	line "Cool!"
 	done
 
 BeechAfterTheftText4:
-	text "But… Is it a"
-	line "#MON EGG?"
+	text "So it invokes"
+	line "nightmares, huh?"
 
-	para "If it is, it is a"
-	line "great discovery!"
+	para "We'll take a look"
+	line "at it, for sure."
 	done
 
 BeechAfterTheftText5:
-	text "BEECH: What?!?"
+	text "BEECH: Huh?"
 
 	para "PROF.OAK gave you"
 	line "a #DEX?"
+	cont "That's awesome!"
 
-	para "<PLAY_G>, is that"
-	line "true? Th-that's"
-	cont "incredible!"
-
-	para "He is superb at"
-	line "seeing the poten-"
-	cont "tial of people as"
-	cont "trainers."
-
-	para "Wow, <PLAY_G>. You"
-	line "may have what it"
-
-	para "takes to become"
-	line "the CHAMPION."
-
-	para "You seem to be"
-	line "getting on great"
-	cont "with #MON too."
+	para "PROF.OAK has an"
+	line "eye for spotting"
+	cont "potential #MON"
+	cont "CHAMPIONs, y'know."
 
 	para "You should take"
 	line "the #MON GYM"
 	cont "challenge."
 
 	para "The closest GYM"
-	line "would be the one"
-	cont "in VIOLET CITY."
+	line "is the one in"
+	cont "VIOLET CITY."
 	done
 
 BeechAfterTheftText6:
-	text "…<PLAY_G>. The"
-	line "road to the"
+	text "There's a long road"
+	line "to becoming CHAMP,"
+	cont "<PLAY_G>."
 
-	para "championship will"
-	line "be a long one."
-
-	para "Before you leave,"
-	line "make sure that you"
-	cont "talk to your mom."
+	para "Go tell your MOM"
+	line "about your trip be-"
+	cont "fore you speed off,"
+	cont "okay?"
 	done
 
 BeechStudyingEggText:
-	text "BEECH: Don't give"
-	line "up! I'll call if"
-
-	para "I learn anything"
-	line "about that EGG!"
+	text "BEECH: Go ahead"
+	line "and show the world"
+	cont "your strength, fut-"
+	cont "ure CHAMP <PLAY_G>!"
 	done
 
 BeechAideHasEggText:
@@ -1571,5 +1523,5 @@ ElmsLab_MapEvents:
 	object_event  2,  9, SPRITE_SCIENTIST, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, BeechsAideScript, EVENT_ELMS_AIDE_IN_LAB
 	object_event  4,  3, SPRITE_POKE_BALL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CyndaquilPokeBallScript, EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
 	object_event  6,  3, SPRITE_POKE_BALL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TotodilePokeBallScript, EVENT_TOTODILE_POKEBALL_IN_ELMS_LAB
-	object_event  0,  0, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ChikoritaPokeBallScript, EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
+	object_event  2,  5, SPRITE_POKE_BALL, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ChikoritaPokeBallScript, EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
 	object_event  5,  3, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CopScript, EVENT_COP_IN_ELMS_LAB

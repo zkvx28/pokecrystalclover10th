@@ -134,7 +134,7 @@ ItemNames::
 	li "STAR PIECE"
 	li "BASEMENT KEY"
 	li "PASS"
-	li "TERU-SAMA"
+	li "INCUBUS ORB"
 	li "TERU-SAMA"
 	li "TERU-SAMA"
 	li "CHARCOAL"

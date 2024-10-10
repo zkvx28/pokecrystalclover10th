@@ -148,7 +148,7 @@ ItemEffects:
 	dw NoEffect            ; STAR_PIECE
 	dw BasementKeyEffect   ; BASEMENT_KEY
 	dw NoEffect            ; PASS
-	dw NoEffect            ; ITEM_87
+	dw NoEffect            ; INCUBUS_ORB
 	dw NoEffect            ; ITEM_88
 	dw NoEffect            ; ITEM_89
 	dw NoEffect            ; CHARCOAL

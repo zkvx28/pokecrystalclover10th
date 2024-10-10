@@ -135,7 +135,7 @@ ItemDescriptions:
 	dw StarPieceDesc
 	dw BasementKeyDesc
 	dw PassDesc
-	dw QuestionMarkDesc
+	dw IncubusOrbDesc
 	dw QuestionMarkDesc
 	dw QuestionMarkDesc
 	dw CharcoalDesc
@@ -756,6 +756,10 @@ BasementKeyDesc:
 PassDesc:
 	db   "A ticket for the"
 	next "MAGNET TRAIN.@"
+
+IncubusOrbDesc:
+	db   "Brings nightmares"
+	next "to those nearby.@"
 
 CharcoalDesc:
 	db   "Powers up fire-"

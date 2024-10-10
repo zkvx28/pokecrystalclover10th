@@ -44,7 +44,6 @@ MeetMomScript:
 	setscene SCENE_PLAYERSHOUSE1F_NOOP
 	setevent EVENT_PLAYERS_HOUSE_MOM_1
 	clearevent EVENT_PLAYERS_HOUSE_MOM_2
-	setevent EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
 	writetext MomGivesPokegearText
 	promptbutton
 	special SetDayOfWeek

@@ -28,7 +28,7 @@ MrPokemonsHouseMrPokemonEventScript:
 	writetext MrPokemonIntroText2
 	promptbutton
 	waitsfx
-	giveitem MYSTERY_EGG
+	giveitem INCUBUS_ORB
 	writetext MrPokemonsHouse_GotEggText
 	playsound SFX_KEY_ITEM
 	waitsfx
@@ -128,11 +128,7 @@ MrPokemonsHouse_OakScript:
 	setmapscene ELMS_LAB, SCENE_ELMSLAB_MEET_OFFICER
 	specialphonecall SPECIALCALL_ROBBED
 	clearevent EVENT_COP_IN_ELMS_LAB
-	checkevent EVENT_GOT_TOTODILE_FROM_ELM
-	iftrue .RivalTakesChikorita
-	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
-	iftrue .RivalTakesCyndaquil
-	setevent EVENT_TOTODILE_POKEBALL_IN_ELMS_LAB
+	setevent EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
 	end
 
 .RivalTakesChikorita:
@@ -174,52 +170,57 @@ MrPokemonIntroText1:
 	text "Hello, hello! You"
 	line "must be <PLAY_G>."
 
-	para "PROF.ELM said that"
-	line "you would visit."
+	para "You've come on"
+	line "PROF.BEECH's be-"
+	cont "half, correct?"
 	done
 
 MrPokemonIntroText2:
-	text "This is what I"
-	line "want PROF.ELM to"
-	cont "examine."
+	text "I would like him"
+	line "to examine this"
+	cont "item here."
 	done
 
 MrPokemonsHouse_GotEggText:
 	text "<PLAYER> received"
-	line "MYSTERY EGG."
+	line "INCUBUS ORB."
 	done
 
 MrPokemonIntroText3:
-	text "I know a couple"
-	line "who run a #MON"
-	cont "DAY-CARE service."
+	text "I came across"
+	line "that ORB at an"
+	cont "auction recently."
 
-	para "They gave me that"
-	line "EGG."
+	para "Apparently it"
+	line "provokes night-"
+	cont "mares in those"
+	cont "who sleep near it."
 
-	para "I was intrigued,"
-	line "so I sent mail to"
-	cont "PROF.ELM."
+	para "I have a lot of"
+	line "time for PROF."
+	cont "BEECH, so I went"
+	cont "ahead and bought"
+	cont "the ORB as it may"
+	cont "aid his research."
 
-	para "For #MON evolu-"
-	line "tion, PROF.ELM is"
-	cont "the authority."
 	done
 
 MrPokemonIntroText4:
-	text "Even PROF.OAK here"
-	line "recognizes that."
+	text "It seems that"
+	line "PROF.OAK here has"
+	cont "an interest in"
+	cont "the ORB, too."
 	done
 
 MrPokemonIntroText5:
-	text "If my assumption"
-	line "is correct, PROF."
-	cont "ELM will know it."
+	text "He wanted to see"
+	line "it before I gave"
+	cont "it to PROF.BEECH."
 	done
 
 MrPokemonsHouse_MrPokemonHealText:
 	text "You are returning"
-	line "to PROF.ELM?"
+	line "to PROF.BEECH?"
 
 	para "Here. Your #MON"
 	line "should have some"
@@ -253,27 +254,25 @@ MrPokemonsHouse_OakText1:
 	para "I heard you were"
 	line "running an errand"
 
-	para "for PROF.ELM, so I"
-	line "waited here."
+	para "for PROF.BEECH,"
+	line "so I waited here."
 
 	para "Oh! What's this?"
-	line "A rare #MON!"
+	line "Two rare #MON!"
 
 	para "Let's see…"
 
 	para "Hm, I see!"
 
 	para "I understand why"
-	line "PROF.ELM gave you"
-
-	para "a #MON for this"
-	line "errand."
+	line "PROF.BEECH gave"
+	cont "you those #MON."
 
 	para "To researchers"
-	line "like PROF.ELM and"
+	line "like PROF.BEECH"
 
-	para "I, #MON are our"
-	line "friends."
+	para "and I, #MON are"
+	line "our friends."
 
 	para "He saw that you"
 	line "would treat your"
